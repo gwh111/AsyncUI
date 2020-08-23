@@ -1,4 +1,10 @@
 # AsyncUI
+
+### What's AsyncUI?  
+AsyncUI is a light async UIKit based on <UIKit/UIKit.h>, you can commit UI tasks before main runloop waiting. Also it can limit concurrent thread count. Combine layers to cut down ui nodes. 
+
+<img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_DISPATCH_QUEUE_PRIORITY_DEFAULT@2x.png?raw=true" > <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_asyncTaskRun@2x.png?raw=true" >
+<img width=512px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp6@2x.png?raw=true" >
  
  ### Podfile
 
@@ -27,10 +33,6 @@ import "AsyncUI.h"
 ```
 
  ### Exp:
- 
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_DISPATCH_QUEUE_PRIORITY_DEFAULT@2x.png?raw=true" >
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_asyncTaskRun@2x.png?raw=true" >
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp6@2x.png?raw=true" >
  
 ```
 // exp1:
@@ -166,3 +168,6 @@ for (int i = 0; i < 100; i++) {
     只剩下一个绘制完全部子view的UILabel
  */
 ```
+
+### Reference:
+The main idea of this Kit is comes after I reading "Texture" and "YYDispatchQueuePool". 

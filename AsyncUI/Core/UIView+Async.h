@@ -18,6 +18,7 @@
  * WARNING: currently this method does not implement the full
  * CoreAnimation composition model, use with caution. */
 @property(nonatomic, assign) BOOL stateless;
+
 @property(nonatomic, assign) int asyncUniqueTag;
 @property(nonatomic, copy) NSString *asyncName;
 

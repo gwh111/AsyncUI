@@ -11,8 +11,7 @@ AsyncUI is a light async UIKit based on <UIKit/UIKit.h>, you can commit UI tasks
  To integrate bench_ios into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
  ```ruby
- source 'https://github.com/CocoaPods/Specs.git'
- platform :ios, '8.0'
+ platform :ios, '10.0'
 
  target 'TargetName' do
  pod 'AsyncUI'

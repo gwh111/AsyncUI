@@ -43,12 +43,12 @@
 
     // exp3:
     // 用断点观察线程数 使app线程数维持在适当水平
-    for (int i = 0; i < 1000; i++) {
-        // Max Thread 83
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSLog(@"%d",i);
-        });
-    }
+//    for (int i = 0; i < 1000; i++) {
+//        // Max Thread 83
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            NSLog(@"%d",i);
+//        });
+//    }
     for (int i = 0; i < 1000; i++) {
         // Max Thread 16
         asyncTaskRun(^{

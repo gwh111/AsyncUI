@@ -1,9 +1,11 @@
 # AsyncUI
 
 ### What's AsyncUI?  
-AsyncUI is a light async UIKit based on <UIKit/UIKit.h>, you can commit UI tasks before main runloop waiting. Also it can limit concurrent thread count by manage limited serial queues. Combine views into single view. 
+AsyncUI is a light async UIKit based on <UIKit/UIKit.h>, you can commit UI tasks before main runloop waiting. Also it can limit concurrent thread count by manage limited serial queues. 
 
 <img height=512px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_DISPATCH_QUEUE_PRIORITY_DEFAULT@2x.png?raw=true" ><img height=512px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_asyncTaskRun@2x.png?raw=true" >  
+
+Combine views into single view.
 <img width=512px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp6@2x.png?raw=true" >
  
  ### Podfile

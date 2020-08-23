@@ -116,6 +116,7 @@ for (int i = 0; i < 100; i++) {
 // exp6:
 // 合并图层 减低ui控件数量
 [AsyncUILabel() commit_make:^(UILabel *label) {
+    // 不合并
     label.frame = CGRectMake(50, 230, 100, 100);
     label.backgroundColor = UIColor.systemPinkColor;
     [self.view addSubview:label];
@@ -140,6 +141,7 @@ for (int i = 0; i < 100; i++) {
     
 }];
 [AsyncUILabel() commit_make:^(UILabel *label) {
+    // 合并
     label.stateless = YES;
     
     label.frame = CGRectMake(200, 230, 100, 100);

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AsyncTask.h"
-#import "UIView+Async.h"
+#import "UIKit+Async.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

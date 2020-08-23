@@ -28,9 +28,9 @@ import "AsyncUI.h"
 
  ### Exp:
  
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_DISPATCH_QUEUE_PRIORITY_DEFAULT.png?raw=true" >
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_asyncTaskRun.png?raw=true" >
- <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp6.png?raw=true" >
+ <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_DISPATCH_QUEUE_PRIORITY_DEFAULT@2x.png?raw=true" >
+ <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp3_asyncTaskRun@2x.png?raw=true" >
+ <img width=256px src="https://github.com/gwh111/AsyncUI/blob/master/demo/exp6@2x.png?raw=true" >
  
 ```
 // exp1:

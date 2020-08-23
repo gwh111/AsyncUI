@@ -1,9 +1,9 @@
 //
 //  AsyncTask.h
-//  testdemo
+//  AsyncUI
 //
-//  Created by dhmac on 2020/8/10.
-//  Copyright © 2020 dhmac. All rights reserved.
+//  Created by gwh on 2020/8/10.
+//  Copyright © 2020 gwh. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

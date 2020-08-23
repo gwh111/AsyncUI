@@ -1,9 +1,9 @@
 //
 //  UILabel+Async.h
-//  testdemo
+//  AsyncUI
 //
-//  Created by dhmac on 2020/8/19.
-//  Copyright © 2020 dhmac. All rights reserved.
+//  Created by gwh on 2020/8/19.
+//  Copyright © 2020 gwh. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

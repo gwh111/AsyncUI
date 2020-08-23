@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = 'AsyncUI'
-  spec.version      = '1.0.1'
+  spec.version      = '1.0.2'
   spec.license      = { :type => 'MIT' }
   spec.homepage     = 'https://github.com/gwh111/AsyncUI'
   spec.authors      = { 'apple' => '173695508@qq.com' }

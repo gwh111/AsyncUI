@@ -27,7 +27,7 @@
             // 回到主线程
         });
     });
-    
+
     // exp2:
     // 带优先级的异步任务
     asyncTaskRunPriority(^{
@@ -40,7 +40,7 @@
         NSOperationQueuePriorityVeryHigh <NSThread: 0x600000d58180>{number = 5, name = (null)}
         NSOperationQueuePriorityVeryLow <NSThread: 0x600000d1d640>{number = 3, name = (null)}
      */
-    
+
     // exp3:
     // 用断点观察线程数 使app线程数维持在适当水平
     for (int i = 0; i < 1000; i++) {
@@ -55,7 +55,7 @@
             NSLog(@"%d",i);
         });
     }
-    
+
     // exp4:
     // 异步任务在同一队列q1执行 返回结果到主线程
     for (int i = 0; i < 5; i++) {
@@ -89,14 +89,14 @@
             [view1 commit_make:^(__kindof UIView *view) {
               view.frame = CGRectMake(0, 0, 30, 30);
               view.backgroundColor = UIColor.brownColor;
-//              [self.view addSubview:view];
+    //              [self.view addSubview:view];
                 
               int asyncUniqueTag = view.asyncUniqueTag;
               NSLog(@"asyncUniqueTag%d",asyncUniqueTag);
             }];
         });
     }
-    
+
     // exp6:
     // 合并图层 减低ui控件数量
     [AsyncUILabel() commit_make:^(UILabel *label) {

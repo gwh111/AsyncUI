@@ -23,7 +23,6 @@ atomic_int asyncUniqueTag;
 }
 
 + (BOOL)resolveClassMethod:(SEL)sel {
-    
     SEL aSel = NSSelectorFromString(@"initUI");
     Method aMethod = class_getClassMethod(self, aSel);
     class_addMethod(object_getClass(self), sel, method_getImplementation(aMethod), "v@:");

@@ -19,6 +19,8 @@
 		D89E208D24F236FA0070DB8F /* UIView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E208624F236FA0070DB8F /* UIView+Async.m */; };
 		D89E208E24F236FA0070DB8F /* AsyncUI.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E208824F236FA0070DB8F /* AsyncUI.m */; };
 		D89E208F24F236FA0070DB8F /* AsyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E208C24F236FA0070DB8F /* AsyncTask.m */; };
+		D89E209224F239A10070DB8F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D89E209124F239A10070DB8F /* README.md */; };
+		D89E209424F239A70070DB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D89E209324F239A70070DB8F /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		D89E208A24F236FA0070DB8F /* AsyncUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUI.h; sourceTree = "<group>"; };
 		D89E208B24F236FA0070DB8F /* AsyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTask.h; sourceTree = "<group>"; };
 		D89E208C24F236FA0070DB8F /* AsyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncTask.m; sourceTree = "<group>"; };
+		D89E209124F239A10070DB8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D89E209324F239A70070DB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		D89E204524F236DB0070DB8F = {
 			isa = PBXGroup;
 			children = (
+				D89E209324F239A70070DB8F /* LICENSE */,
+				D89E209124F239A10070DB8F /* README.md */,
 				D89E205024F236DB0070DB8F /* AsyncUI */,
 				D89E206C24F236DF0070DB8F /* AsyncUITests */,
 				D89E207724F236DF0070DB8F /* AsyncUIUITests */,
@@ -267,7 +273,9 @@
 			files = (
 				D89E206124F236DF0070DB8F /* LaunchScreen.storyboard in Resources */,
 				D89E205E24F236DF0070DB8F /* Assets.xcassets in Resources */,
+				D89E209224F239A10070DB8F /* README.md in Resources */,
 				D89E205C24F236DB0070DB8F /* Main.storyboard in Resources */,
+				D89E209424F239A70070DB8F /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

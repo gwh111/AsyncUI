@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "AsyncUI.h"
+#import <SpriteKit/SpriteKit.h>
+#import "AsyncUI-Swift.h"
 
 @interface ViewController ()
 
@@ -15,9 +17,36 @@
 
 @implementation ViewController
 
+- (void)loadView {
+    SKView *view = SKView.new;
+    view.backgroundColor = UIColor.blackColor;
+    self.view = view;
+}
+
+- (void)keeptime {
+    [self sdfsdfsdfsdf];
+}
+
+- (void)sdfsdfsdfsdf {
+    sleep(1);
+    
+//    id arr = [RCBacktrace callstack:NSThread.mainThread];
+//    NSLog(@"%@",arr);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    [RCBacktrace setup];
+    
+    SKView *skView = (SKView *)self.view;
+    skView.showsFPS = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self keeptime];
+    });
     
     // exp1:
     // 执行一个异步任务

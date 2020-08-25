@@ -22,6 +22,8 @@
 		D89E209224F239A10070DB8F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D89E209124F239A10070DB8F /* README.md */; };
 		D89E209424F239A70070DB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D89E209324F239A70070DB8F /* LICENSE */; };
 		D89E209624F254CA0070DB8F /* AsyncUI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D89E209524F254CA0070DB8F /* AsyncUI.podspec */; };
+		F33E9A9E24F4BA91002B0F90 /* QiStackFrameLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F33E9A9C24F4BA91002B0F90 /* QiStackFrameLogger.m */; };
+		F33E9AB824F4E113002B0F90 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E9AB724F4E113002B0F90 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,10 @@
 		D89E209124F239A10070DB8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D89E209324F239A70070DB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D89E209524F254CA0070DB8F /* AsyncUI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AsyncUI.podspec; sourceTree = "<group>"; };
+		F33E9A9C24F4BA91002B0F90 /* QiStackFrameLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiStackFrameLogger.m; sourceTree = "<group>"; };
+		F33E9A9D24F4BA91002B0F90 /* QiStackFrameLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiStackFrameLogger.h; sourceTree = "<group>"; };
+		F33E9AB624F4E112002B0F90 /* AsyncUI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsyncUI-Bridging-Header.h"; sourceTree = "<group>"; };
+		F33E9AB724F4E113002B0F90 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +135,14 @@
 				D89E205524F236DB0070DB8F /* SceneDelegate.m */,
 				D89E205724F236DB0070DB8F /* ViewController.h */,
 				D89E205824F236DB0070DB8F /* ViewController.m */,
+				F33E9AB724F4E113002B0F90 /* File.swift */,
 				D89E209024F2374D0070DB8F /* Core */,
 				D89E205A24F236DB0070DB8F /* Main.storyboard */,
 				D89E205D24F236DF0070DB8F /* Assets.xcassets */,
 				D89E205F24F236DF0070DB8F /* LaunchScreen.storyboard */,
 				D89E206224F236DF0070DB8F /* Info.plist */,
 				D89E206324F236DF0070DB8F /* main.m */,
+				F33E9AB624F4E112002B0F90 /* AsyncUI-Bridging-Header.h */,
 			);
 			path = AsyncUI;
 			sourceTree = "<group>";
@@ -167,6 +175,8 @@
 				D89E208624F236FA0070DB8F /* UIView+Async.m */,
 				D89E208B24F236FA0070DB8F /* AsyncTask.h */,
 				D89E208C24F236FA0070DB8F /* AsyncTask.m */,
+				F33E9A9D24F4BA91002B0F90 /* QiStackFrameLogger.h */,
+				F33E9A9C24F4BA91002B0F90 /* QiStackFrameLogger.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -238,6 +248,7 @@
 				TargetAttributes = {
 					D89E204D24F236DB0070DB8F = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 					D89E206824F236DF0070DB8F = {
 						CreatedOnToolsVersion = 11.5;
@@ -306,10 +317,12 @@
 			files = (
 				D89E205924F236DB0070DB8F /* ViewController.m in Sources */,
 				D89E205324F236DB0070DB8F /* AppDelegate.m in Sources */,
+				F33E9A9E24F4BA91002B0F90 /* QiStackFrameLogger.m in Sources */,
 				D89E208E24F236FA0070DB8F /* AsyncUI.m in Sources */,
 				D89E206424F236DF0070DB8F /* main.m in Sources */,
 				D89E208D24F236FA0070DB8F /* UIView+Async.m in Sources */,
 				D89E208F24F236FA0070DB8F /* AsyncTask.m in Sources */,
+				F33E9AB824F4E113002B0F90 /* File.swift in Sources */,
 				D89E205624F236DB0070DB8F /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +492,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AsyncUI",
+				);
 				INFOPLIST_FILE = AsyncUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,6 +505,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gwh.AsyncUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncUI/AsyncUI-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -495,7 +516,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AsyncUI",
+				);
 				INFOPLIST_FILE = AsyncUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,6 +529,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gwh.AsyncUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncUI/AsyncUI-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -510,6 +538,7 @@
 		D89E208124F236DF0070DB8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AsyncUITests/Info.plist;
@@ -529,6 +558,7 @@
 		D89E208224F236DF0070DB8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AsyncUITests/Info.plist;
@@ -548,6 +578,7 @@
 		D89E208424F236DF0070DB8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AsyncUIUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -565,6 +596,7 @@
 		D89E208524F236DF0070DB8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AsyncUIUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

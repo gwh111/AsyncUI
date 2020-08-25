@@ -16,6 +16,8 @@ static NSMapTable *queueKey;
 #define MAX_QUEUE_COUNT 32
 atomic_int acnt;
 
+//#import "QiStackFrameLogger.h"
+
 static inline qos_class_t NSQualityOfServiceToQOSClass(NSOperationQueuePriority qos) {
     switch (qos) {
         case NSOperationQueuePriorityVeryHigh: return QOS_CLASS_USER_INTERACTIVE;
@@ -123,6 +125,8 @@ static AsyncTaskDispatchContext *AsyncTaskDispatchContextGetForPriority(NSOperat
     NSPointerArray *_internalQueue;
 }
 
+@property(nonatomic, retain) CADisplayLink *displayLink;
+
 @end
 
 @implementation AsyncTask
@@ -136,6 +140,36 @@ static AsyncTask *userManger = nil;
         [userManger setup];
     });
     return userManger;
+}
+
++ (void)load {
+    #if DEBUG
+    [AsyncTask shared];
+    #endif
+}
+
+- (void)screenRenderCall {
+    __block BOOL flag = YES;
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    __block int count = 0;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        flag = NO;
+        dispatch_semaphore_signal(sema);
+    });
+    dispatch_semaphore_wait(sema, dispatch_time(DISPATCH_TIME_NOW, 33.3*NSEC_PER_MSEC));
+    if (flag) {
+        count++;
+        flag = NO;
+        id class = NSClassFromString(@"QiStackFrameLogger");
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wundeclared-selector"
+        id result = [class performSelector:@selector(qi_backtraceOfMainThread)];
+        #pragma clang diagnostic pop
+        CCLOG(@"\n------   Main Thread Stuck   ------%fms\n%@\n\n", count * 33.3, result);
+        sleep(1);
+    } else {
+        count = 0;
+    }
 }
 
 - (void)setup {
@@ -153,6 +187,21 @@ static AsyncTask *userManger = nil;
     _internalQueue = [[NSPointerArray alloc] initWithOptions:options];
     
     _runLoop = CFRunLoopGetMain();
+    
+    #if DEBUG
+    _FPSMonitorOn = YES;
+    #endif
+    
+    if (_FPSMonitorOn) {
+        asyncTaskRunPriority(^{
+            CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector: @selector(screenRenderCall)];
+            [self.displayLink invalidate];
+            self.displayLink = displayLink;
+
+            [self.displayLink addToRunLoop: [NSRunLoop currentRunLoop] forMode: NSDefaultRunLoopMode];
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, CGFLOAT_MAX, NO);
+        }, NSOperationQueuePriorityLow);
+    }
     
     // Self is guaranteed to outlive the observer.  Without the high cost of a weak pointer,
     // unowned(__unsafe_unretained) allows us to avoid flagging the memory cycle detector.
@@ -270,6 +319,11 @@ void asyncTaskMainRunloopBeforeWaitingRun(asyncTask_block_t block) {
     [AsyncTask.shared mainRunloopBeforeWaitingRun:block];
 }
 
+typedef struct {
+    uint32_t index;
+    bool occupied;
+} AsyncTaskQueueContext;
+
 dispatch_queue_t AsyncTaskDispatchQueueGetForPriority(NSOperationQueuePriority priority, NSString * _Nullable name) {
 
     if (name.length <= 0) {
@@ -282,6 +336,9 @@ dispatch_queue_t AsyncTaskDispatchQueueGetForPriority(NSOperationQueuePriority p
     NSNumber *index;
     os_unfair_lock_lock(&queueLock);
     if (![queueKey objectForKey:name]) {
+//        AsyncTaskQueueContext *queue = (AsyncTaskQueueContext *)calloc(1, sizeof(AsyncTaskQueueContext));
+//        queue->index = context->queueCount;
+//        queue->occupied = true;
         index = [NSNumber numberWithInteger:arc4random()%context->queueCount];
         [queueKey setObject:index forKey:name];
     } else {

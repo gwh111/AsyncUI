@@ -13,6 +13,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#ifdef DEBUG
+#   define CCLOG(fmt, ...) NSLog((@"%s [Line %d] \n" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define CCLOG(...)
+#endif
+
 typedef void (^asyncTask_block_t)(void);
 
 /**
@@ -43,6 +49,7 @@ extern dispatch_queue_t AsyncTaskDispatchQueueGetForPriority(NSOperationQueuePri
 
 // As call 'asyncTaskMainRunloopBeforeWaitingRun', task will be commited in runloop and execute in 'beforewaiting', set max task commited in one runloop, if still tasks, will be commit in next runloop.
 @property (nonatomic, assign) NSUInteger maxTaskInOneRunloop;//default is 12
+@property (readonly, nonatomic, assign) BOOL FPSMonitorOn;
 
 - (void)mainRunloopBeforeWaitingRun:(void(^)(void))block;
 

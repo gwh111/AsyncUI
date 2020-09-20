@@ -161,7 +161,7 @@ static AsyncTask *userManger = nil;
         [weakSelf processQueue];
     };
     _runLoopObserver = CFRunLoopObserverCreateWithHandler(NULL, kCFRunLoopBeforeWaiting, true, 0, handlerBlock);
-    CFRunLoopAddObserver(_runLoop, _runLoopObserver,  kCFRunLoopCommonModes);
+    CFRunLoopAddObserver(_runLoop, _runLoopObserver,  kCFRunLoopDefaultMode);
     
     // It is not guaranteed that the runloop will turn if it has no scheduled work, and this causes processing of
     // the queue to stop. Attaching a custom loop source to the run loop and signal it if new work needs to be done
